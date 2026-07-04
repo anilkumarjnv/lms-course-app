@@ -31,8 +31,6 @@ export const NAV = {
  */
 export const SHELL = {
   searchNote: 'Phase 2 shell — live search arrives in Phase 6.',
-  detailCourseId: 'Course ID',
-  detailNote: 'Phase 2 shell — the rich detail view arrives in Phase 5.',
 } as const;
 
 export const HOME = {

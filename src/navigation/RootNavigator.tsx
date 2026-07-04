@@ -53,7 +53,8 @@ export function RootNavigator() {
         <Stack.Screen
           name="Detail"
           component={DetailScreen}
-          options={{ title: NAV.course }}
+          // Detail draws its own animated collapsing header.
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="WebView"

@@ -80,6 +80,19 @@ export const courseService = {
     return simulateNetwork(resolveCourses(ids));
   },
 
+  /** Courses in the same category as `courseId`, excluding it. */
+  getRelatedCourses(courseId: string): Promise<Course[]> {
+    const course = COURSE_BY_ID.get(courseId);
+    if (!course) {
+      return simulateNetwork<Course[]>([]);
+    }
+    const related = COURSES.filter(
+      (candidate) =>
+        candidate.category === course.category && candidate.id !== courseId,
+    );
+    return simulateNetwork(related);
+  },
+
   /**
    * Case-insensitive search across title, category, and tags. An empty/blank
    * query resolves to an empty list.
