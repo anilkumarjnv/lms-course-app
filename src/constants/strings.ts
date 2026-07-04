@@ -25,14 +25,6 @@ export const NAV = {
   web: 'Web',
 } as const;
 
-/**
- * Temporary Phase-2 scaffolding copy. Lives here (not inline) so screens stay
- * literal-free; removed as each surface gets its real content.
- */
-export const SHELL = {
-  searchNote: 'Phase 2 shell — live search arrives in Phase 6.',
-} as const;
-
 export const HOME = {
   title: 'Home',
   heroBadge: 'Featured',
