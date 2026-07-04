@@ -20,6 +20,23 @@ export const TABS = {
   profile: 'Profile',
 } as const;
 
+export const NAV = {
+  course: 'Course',
+  web: 'Web',
+} as const;
+
+/**
+ * Temporary Phase-2 scaffolding copy. Lives here (not inline) so screens stay
+ * literal-free; removed as each surface gets its real content.
+ */
+export const SHELL = {
+  homeCta: 'Open sample course →',
+  homeNote: 'Phase 2 shell — the real feed arrives in Phase 4.',
+  searchNote: 'Phase 2 shell — live search arrives in Phase 6.',
+  detailCourseId: 'Course ID',
+  detailNote: 'Phase 2 shell — the rich detail view arrives in Phase 5.',
+} as const;
+
 export const HOME = {
   title: 'Home',
   heroBadge: 'Featured',
