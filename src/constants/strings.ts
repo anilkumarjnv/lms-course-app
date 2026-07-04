@@ -76,3 +76,10 @@ export const NOTIFICATIONS = {
   testTitle: 'Keep learning! 📚',
   testBody: 'Jump back into Modern React from Scratch.',
 } as const;
+
+export const WEBVIEW = {
+  bridgeReceived: 'Bridge · PAGE_LOADED received',
+  untitled: 'Untitled page',
+  errorTitle: 'Couldn’t load page',
+  errorBody: 'Check your connection and try again.',
+} as const;
