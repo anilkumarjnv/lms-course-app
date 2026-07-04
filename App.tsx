@@ -1,20 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
+import './global.css';
+import { APP } from '@/constants/strings';
+
+// Phase 1 placeholder. The full provider stack + navigation land in Phase 2.
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <View className="flex-1 items-center justify-center bg-white px-6">
+      <Text className="text-2xl font-bold text-slate-900">{APP.name}</Text>
+      <Text className="mt-2 text-center text-base text-slate-500">
+        {APP.tagline}
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

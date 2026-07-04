@@ -1,0 +1,27 @@
+[
+  {
+    "id": "cat-web",
+    "title": "Web Development",
+    "courseIds": ["c1", "c2", "c3"]
+  },
+  {
+    "id": "cat-mobile",
+    "title": "Mobile Development",
+    "courseIds": ["c4", "c5", "c6"]
+  },
+  {
+    "id": "cat-data",
+    "title": "Data Science & AI",
+    "courseIds": ["c7", "c8", "c9"]
+  },
+  {
+    "id": "cat-design",
+    "title": "Design",
+    "courseIds": ["c10", "c11", "c12"]
+  },
+  {
+    "id": "cat-business",
+    "title": "Business & Marketing",
+    "courseIds": ["c13", "c14", "c15"]
+  }
+]
