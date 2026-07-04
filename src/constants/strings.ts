@@ -30,8 +30,6 @@ export const NAV = {
  * literal-free; removed as each surface gets its real content.
  */
 export const SHELL = {
-  homeCta: 'Open sample course →',
-  homeNote: 'Phase 2 shell — the real feed arrives in Phase 4.',
   searchNote: 'Phase 2 shell — live search arrives in Phase 6.',
   detailCourseId: 'Course ID',
   detailNote: 'Phase 2 shell — the rich detail view arrives in Phase 5.',
