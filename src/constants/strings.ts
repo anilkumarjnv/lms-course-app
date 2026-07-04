@@ -57,11 +57,18 @@ export const SEARCH = {
 
 export const PROFILE = {
   title: 'Profile',
+  memberSince: 'Member since',
+  enrolled: 'courses enrolled',
+  settingsTitle: 'Settings',
   darkMode: 'Dark mode',
   notifications: 'Notifications',
   sendTestNotification: 'Send test notification',
+  notificationScheduled:
+    'Notification scheduled — tap it when it arrives to deep-link into a course.',
+  notificationDenied:
+    'Notifications are disabled. Enable them in system settings to try this.',
   watchlistTitle: 'My Watchlist',
-  watchlistEmpty: 'Your watchlist is empty.',
+  watchlistEmpty: 'Your watchlist is empty. Save courses from their detail page.',
   logout: 'Log out',
 } as const;
 

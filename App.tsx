@@ -6,8 +6,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { queryClient } from '@/lib/queryClient';
 import { RootNavigator } from '@/navigation/RootNavigator';
+import { notificationService } from '@/services/notificationService';
 import { AppPaperProvider } from '@/theme/PaperProvider';
 import { ThemeProvider } from '@/theme/ThemeProvider';
+
+// Show local notifications while the app is foregrounded.
+notificationService.configureHandler();
 
 // Provider order (spec): SafeArea > QueryClient > Theme > Navigation.
 // GestureHandlerRootView must wrap the whole tree for React Navigation.

@@ -13,4 +13,6 @@ export const queryKeys = {
   coursesByIds: (ids: readonly string[]) => ['courses', 'by-ids', ...ids] as const,
   search: (query: string) => ['search', query] as const,
   coursesInfinite: ['courses', 'infinite'] as const,
+  user: ['user'] as const,
+  watchlistCourses: (ids: readonly string[]) => ['watchlist', ...ids] as const,
 };
