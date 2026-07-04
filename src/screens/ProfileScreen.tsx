@@ -1,5 +1,6 @@
-import { Switch, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Switch } from 'react-native-paper';
 
 import { PROFILE } from '@/constants/strings';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -18,12 +19,7 @@ export function ProfileScreen() {
           <Text className="text-base font-medium text-foreground">
             {PROFILE.darkMode}
           </Text>
-          <Switch
-            value={isDark}
-            onValueChange={toggleTheme}
-            trackColor={{ true: colors.primary, false: colors.border }}
-            thumbColor={colors.surface}
-          />
+          <Switch value={isDark} onValueChange={toggleTheme} color={colors.primary} />
         </View>
       </View>
     </SafeAreaView>
