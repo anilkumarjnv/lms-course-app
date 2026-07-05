@@ -25,6 +25,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 import { useWatchlistStore } from '@/store/watchlistStore';
 import type { RootStackParamList } from '@/types/navigation';
 import { formatRating } from '@/utils/format';
+import { haptics } from '@/utils/haptics';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Detail'>;
 
@@ -207,7 +208,10 @@ export function DetailScreen({ route, navigation }: Props) {
               />
             </View>
             <Pressable
-              onPress={() => toggleWatchlist(course.id)}
+              onPress={() => {
+                haptics.selection();
+                toggleWatchlist(course.id);
+              }}
               className="items-center justify-center rounded-2xl border border-border bg-card px-4 active:opacity-80"
               accessibilityRole="button"
               accessibilityLabel={saved ? DETAIL.removeWatchlist : DETAIL.addWatchlist}

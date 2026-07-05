@@ -16,6 +16,7 @@ export type TabParamList = {
 export type RootStackParamList = {
   Tabs: NavigatorScreenParams<TabParamList> | undefined;
   Detail: { courseId: string };
+  Browse: undefined;
   WebView: { url: string; title?: string };
 };
 

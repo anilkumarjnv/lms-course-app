@@ -23,6 +23,12 @@ export const TABS = {
 export const NAV = {
   course: 'Course',
   web: 'Web',
+  browse: 'Browse all',
+} as const;
+
+export const BROWSE = {
+  cta: 'Browse all',
+  endReached: 'You’ve reached the end',
 } as const;
 
 export const HOME = {

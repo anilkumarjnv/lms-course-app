@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { ActivityIndicator, Pressable, Text } from 'react-native';
 
 import { useTheme } from '@/theme/ThemeProvider';
+import { haptics } from '@/utils/haptics';
 
 type IoniconName = keyof typeof Ionicons.glyphMap;
 
@@ -32,7 +33,10 @@ export function Button({
 
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => {
+        haptics.light();
+        onPress();
+      }}
       disabled={disabled || loading}
       accessibilityRole="button"
       accessibilityLabel={label}

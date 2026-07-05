@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NAV } from '@/constants/strings';
 import { BottomTabNavigator } from '@/navigation/BottomTabNavigator';
 import { linking } from '@/navigation/linking';
+import { BrowseScreen } from '@/screens/BrowseScreen';
 import { DetailScreen } from '@/screens/DetailScreen';
 import { WebViewScreen } from '@/screens/WebViewScreen';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -42,6 +43,7 @@ export function RootNavigator() {
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.foreground,
           headerTitleStyle: { color: colors.foreground },
+          headerBackButtonDisplayMode: 'minimal',
           contentStyle: { backgroundColor: colors.background },
         }}
       >
@@ -55,6 +57,11 @@ export function RootNavigator() {
           component={DetailScreen}
           // Detail draws its own animated collapsing header.
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Browse"
+          component={BrowseScreen}
+          options={{ title: NAV.browse }}
         />
         <Stack.Screen
           name="WebView"
