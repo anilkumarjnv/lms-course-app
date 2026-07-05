@@ -35,8 +35,18 @@ export const HOME = {
   title: 'Home',
   heroBadge: 'Featured',
   continueLearning: 'Continue Learning',
+  topCourses: 'Top Courses',
+  filterAll: 'All',
   emptyTitle: 'Nothing here yet',
   emptyBody: 'Courses you start will show up here.',
+} as const;
+
+export const PLAYER = {
+  preview: 'PREVIEW',
+  play: 'Play',
+  add: 'Add to watchlist',
+  upNext: 'Up next',
+  nowPlaying: 'Now playing',
 } as const;
 
 export const DETAIL = {

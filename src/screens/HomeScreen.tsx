@@ -6,11 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Ionicons } from '@expo/vector-icons';
 
+import { ContinueRow } from '@/components/ContinueRow';
 import { CourseRow } from '@/components/CourseRow';
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { HeroCarousel } from '@/components/HeroCarousel';
 import { HomeFeedSkeleton } from '@/components/HomeFeedSkeleton';
+import { TopCourses } from '@/components/TopCourses';
 import { APP, BROWSE, HOME } from '@/constants/strings';
 import { useHomeFeed } from '@/hooks/useHomeFeed';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -49,6 +51,10 @@ export function HomeScreen() {
   );
   const openBrowse = useCallback(
     () => navigation.navigate('Browse'),
+    [navigation],
+  );
+  const openPlayer = useCallback(
+    (courseId: string) => navigation.navigate('Player', { courseId }),
     [navigation],
   );
 
@@ -100,17 +106,22 @@ export function HomeScreen() {
         }
       >
         <HomeHeader onBrowse={openBrowse} />
-        <View className="gap-6 pt-2">
-          <HeroCarousel courses={hero} onPress={openCourse} />
+        <View className="gap-7 pt-2">
+          <HeroCarousel
+            courses={hero}
+            onPress={openCourse}
+            onPlay={openPlayer}
+          />
 
           {continueLearning.length > 0 ? (
-            <CourseRow
+            <ContinueRow
               title={HOME.continueLearning}
               courses={continueLearning}
-              onPressCourse={openCourse}
-              showProgress
+              onPlay={openPlayer}
             />
           ) : null}
+
+          <TopCourses categories={categories} onPress={openCourse} />
 
           {categories.map((category) =>
             category.courses.length > 0 ? (

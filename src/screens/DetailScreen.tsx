@@ -198,12 +198,9 @@ export function DetailScreen({ route, navigation }: Props) {
             <View className="flex-1">
               <Button
                 label={inProgress ? DETAIL.resume : DETAIL.enroll}
-                icon={inProgress ? 'play' : 'add'}
+                icon="play"
                 onPress={() =>
-                  navigation.navigate('WebView', {
-                    url: 'https://reactnative.dev',
-                    title: course.title,
-                  })
+                  navigation.navigate('Player', { courseId: course.id })
                 }
               />
             </View>

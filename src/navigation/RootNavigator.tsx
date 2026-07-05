@@ -11,6 +11,7 @@ import { BottomTabNavigator } from '@/navigation/BottomTabNavigator';
 import { linking } from '@/navigation/linking';
 import { BrowseScreen } from '@/screens/BrowseScreen';
 import { DetailScreen } from '@/screens/DetailScreen';
+import { PlayerScreen } from '@/screens/PlayerScreen';
 import { WebViewScreen } from '@/screens/WebViewScreen';
 import { useTheme } from '@/theme/ThemeProvider';
 import type { RootStackParamList } from '@/types/navigation';
@@ -57,6 +58,12 @@ export function RootNavigator() {
           component={DetailScreen}
           // Detail draws its own animated collapsing header.
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Player"
+          component={PlayerScreen}
+          // Immersive playback surface draws its own controls.
+          options={{ headerShown: false, presentation: 'fullScreenModal' }}
         />
         <Stack.Screen
           name="Browse"

@@ -32,6 +32,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
         },
       },
       Detail: 'detail/:courseId',
+      Player: 'player/:courseId',
       Browse: 'browse',
       WebView: 'webview',
     },
