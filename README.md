@@ -1,177 +1,158 @@
-# LearnHub — Mobile LMS (React Native / Expo)
+# LearnHub 🎓
 
-A mobile-first Learning Management System built as a **Hotstar-style content app**,
-re-themed for course discovery. Hero banners are featured courses, carousels are
-course categories, "Continue Watching" becomes "Continue Learning", and the player
-surface plays lessons/modules. This mapping keeps the polished streaming UX while
-modelling the real product: discovery → detail → playback → progress.
+A **mobile-first Learning Management System** built with React Native (Expo) — designed like a
+**streaming app** (think Hotstar/Netflix) but reimagined for courses. The hero is a featured
+course, carousels are categories, "Continue Watching" becomes "Continue Learning", and the
+player surface plays lessons. That mapping keeps a polished, familiar UX while modelling a real
+product: **discover → detail → play → track progress.**
 
-> Built phase-by-phase; each phase is a clean commit.
+> Built for a React Native / Expo take-home. Fully typed, data-driven, and tuned for performance.
 
-## Features
+---
 
-- **Home** — edge-peek hero carousel with overlaid **Play / Add** controls, landscape
-  **Continue Learning** resume cards (progress + "time left"), a **Top Courses** ranked
-  rail (gradient numerals, category filter chips), and per-category rows.
-- **Detail** — Reanimated collapsing/parallax header, metadata chips, progress-aware
-  **Resume/Enroll**, **Watchlist** toggle, expandable About, module list with completion,
-  related courses, and a **WebView** syllabus link.
-- **Player** — immersive "Now Playing" surface (play/pause, ±10s, scrubber + clock,
-  up-next modules).
-- **Search** — debounced query, results list, prompt/skeleton/empty/error states.
-- **Profile** — mock user, dark-mode + notifications toggles, **local notification** that
-  deep-links into a course on tap, watchlist section, logout.
-- **Browse all** — infinite scroll (`useInfiniteQuery`).
-- **Cross-cutting** — light/dark theming, skeleton/empty/error on every async surface,
-  pull-to-refresh, haptics, press micro-interactions, shimmer skeletons, deep links
-  (`app://detail/:id`), and a WebView `postMessage` bridge.
+## 📱 Screenshots
 
-## Tech stack
+|  Home  |  Course Detail  |  Player  |
+| :----: | :-------------: | :------: |
+| <img src="docs/screenshots/home-light.png" width="230" /> | <img src="docs/screenshots/detail.png" width="230" /> | <img src="docs/screenshots/player.png" width="230" /> |
 
-| Concern | Choice |
+|  Search  |  Profile  |  Browse (infinite scroll)  |
+| :------: | :-------: | :------------------------: |
+| <img src="docs/screenshots/search.png" width="230" /> | <img src="docs/screenshots/profile.png" width="230" /> | <img src="docs/screenshots/browse-all.png" width="230" /> |
+
+### 🌙 Full dark mode
+
+|  Home  |  Detail  |  Player  |
+| :----: | :------: | :------: |
+| <img src="docs/screenshots/home-dark.png" width="230" /> | <img src="docs/screenshots/detail-dark.png" width="230" /> | <img src="docs/screenshots/player-dark.png" width="230" /> |
+
+---
+
+## ✨ What it does
+
+- **Home** — a swipeable, edge-peek **hero** with Play / Add buttons, a **Continue Learning**
+  resume rail (progress + time left), a **Top Courses** ranked list with category filter chips,
+  and category rows.
+- **Course Detail** — a Reanimated **collapsing/parallax header**, metadata chips, a
+  progress-aware **Resume/Enroll** button, a **watchlist** toggle, an expandable About, the
+  module list with completion state, related courses, and a **WebView** syllabus link.
+- **Player** — an immersive **Now Playing** screen: play/pause, ±10s skip, a scrubber with a
+  live timer, and an up-next module list.
+- **Search** — **debounced** search with prompt / loading / empty / error states.
+- **Profile** — mock user, **dark-mode** and notifications toggles, a **test notification** that
+  **deep-links** into a course when tapped, watchlist section, and logout.
+- **Everywhere** — light/dark theming, **skeleton loaders**, pull-to-refresh, **infinite scroll**,
+  haptics, press animations, and a WebView ↔ RN `postMessage` bridge.
+
+---
+
+## 🧱 Tech stack
+
+| Area | Choice |
 | --- | --- |
-| Framework | Expo SDK 57 (managed / CNG), React Native 0.81, React 19 |
-| Language | TypeScript (strict, `noUncheckedIndexedAccess`) |
-| Styling | NativeWind v4 (design tokens via CSS variables) |
-| Navigation | React Navigation v7 (native stack + bottom tabs) |
-| Server state | `@tanstack/react-query` v5 |
-| Client/UI state | `zustand` (theme, watchlist) |
-| Images | `expo-image` (blurhash placeholders) |
-| Component library | React Native Paper (themed `Switch`) |
-| Animation | `react-native-reanimated` v4 |
-| Others | `expo-linear-gradient`, `@react-native-masked-view/masked-view`, `react-native-webview`, `expo-notifications`, `expo-haptics` |
-| Testing | Jest (`jest-expo`) + `@testing-library/react-native` |
+| Framework | **Expo SDK 57** (managed / CNG), React Native 0.81, React 19 |
+| Language | **TypeScript** (strict, `noUncheckedIndexedAccess`) |
+| Styling | **NativeWind v4** — design tokens via CSS variables |
+| Navigation | **React Navigation v7** (native stack + bottom tabs) |
+| Server state | **@tanstack/react-query** v5 |
+| Client/UI state | **zustand** (theme, watchlist) |
+| Animation | **Reanimated v4** |
+| Images | **expo-image** (blurhash placeholders) |
+| Component lib | **React Native Paper** (themed Switch) |
+| Also | expo-linear-gradient, masked-view, react-native-webview, expo-notifications, expo-haptics |
+| Testing | **Jest** (`jest-expo`) + **React Native Testing Library** |
 
-## Getting started
+---
+
+## 🚀 Run it locally
 
 ```bash
 npm install
 
-# Run a development build on iOS (recommended — see note below)
-npm run ios          # expo run:ios  (prebuild + native build + launch)
-# or Android
-npm run android
-
+npm run ios          # or: npm run android   (development build)
 npm test             # unit tests
 npm run typecheck    # tsc --noEmit
 ```
 
-> **Why a development build, not Expo Go?** On the current toolchain, Expo Go 57 crashes
-> at startup on the iOS simulators here (an `expo-notifications` native crash on iOS 26,
-> and a `react-native-worklets` JSI mismatch on iOS 18.5) — both are Expo Go binary issues,
-> not app code. A development build compiles the native modules from this project at
-> matching versions and runs cleanly. This is still the **managed / CNG** workflow:
-> `ios/` and `android/` are git-ignored, generated artifacts (`expo prebuild`), and
-> `app.json` remains the single source of truth. For a shareable build, use **EAS Build**.
+> **Why a development build (not Expo Go)?** On this toolchain, Expo Go 57 crashes at startup on
+> the iOS simulators (native issues in `expo-notifications` / `react-native-worklets` — not app
+> code). A dev build compiles the native modules at matching versions and runs cleanly. It's
+> still the **managed / CNG** workflow: `ios/` and `android/` are git-ignored, regenerated by
+> `expo prebuild`, and `app.json` stays the single source of truth. For a shareable build, use
+> **EAS** (`eas build -p android --profile preview`).
 
-## Architecture
+---
+
+## 🏗️ How it's built
 
 ```
 src/
-  services/    mock API (courseService, userService, notificationService)
-  hooks/       React Query + small hooks bridging services -> UI
-  store/       zustand (themeStore, watchlistStore)
-  screens/     Home, Detail, Player, Search, Profile, Browse, WebView
-  components/   presentational, prop-driven, reusable
-  theme/       tokens + ThemeProvider (+ Paper bridge)
-  navigation/  RootNavigator, tabs, deep-link config
-  constants/   strings (all UI copy), images
-  utils/       delay (mock network), format, haptics, analytics
-  data/        seed JSON (imported ONLY by services)
+  services/    mock API (course / user / notification) — the ONLY place that reads seed JSON
+  hooks/       React Query hooks that bridge services -> UI
+  store/       zustand (theme, watchlist)
+  screens/     Home · Detail · Player · Search · Profile · Browse · WebView
+  components/  presentational, prop-driven, reusable
+  theme/       design tokens + ThemeProvider
+  constants/   strings (all UI copy) + images
+  utils/       delay (mock network), format, haptics
+  data/        seed JSON
 ```
 
-**Layering.** Screens orchestrate, components render from props, services fetch, hooks
-bridge services to components. The single most important rule: **only `services/` may
-import the seed JSON** — so the entire data source can be swapped for a real API without
-touching a single consumer. All user-facing copy lives in `constants/strings.ts`; screens
-contain no hardcoded strings.
+**One clear rule for the data flow:** *screens orchestrate, components render from props,
+services fetch, hooks bridge.* Only the **service layer** touches the seed data — so swapping the
+mock for a real API wouldn't change a single screen. Every string lives in `constants/strings.ts`;
+there are no hardcoded strings (or colors) in components.
 
-**Mock service layer.** Every call goes through `simulateNetwork` (artificial latency +
-a tunable `networkConfig.failureRate`), so the UI exercises real loading / success / error
-paths. Flip `failureRate` to `1` to demo error states.
+**Why React Query *and* Zustand?** They solve different problems:
 
-### Why React Query **and** Zustand (the split)
+- **React Query = server state** (course data). Caching, loading/error flags, `refetch`, and
+  pagination come for free.
+- **Zustand = local UI state** (theme, watchlist). Synchronous, no server — a tiny store is the
+  right tool, and it avoids prop-drilling.
 
-They solve different problems, and conflating them causes bugs:
+> Rule of thumb: *from the server → React Query; local UI → Zustand.*
 
-- **React Query owns server/async state** — course data from the service. It gives caching,
-  dedup, `isLoading`/`isError`, `refetch`, and pagination (`useInfiniteQuery`) for free.
-  Putting this in a global store would mean hand-rolling cache invalidation and loading
-  flags.
-- **Zustand owns client/UI state** — theme and watchlist. These are synchronous, local, and
-  have no server representation. Modelling a UI toggle as a "query" would be awkward; a tiny
-  store is the right tool and avoids prop-drilling.
+**Theming** — `theme/tokens.ts` is the single source of truth. `ThemeProvider` injects the active
+palette as **NativeWind CSS variables** *and* exposes raw hex to imperative consumers (navigation,
+StatusBar, icons). Flipping the theme rebuilds the variables, so the whole app re-themes instantly.
 
-Rule of thumb used throughout: *if it comes from (or goes to) the server, it's React Query;
-if it's local UI state, it's Zustand.*
+**Component library** — the brief asked for Gluestack UI, with **React Native Paper as the
+sanctioned fallback**. On this bleeding-edge stack Gluestack's setup was risky, so Paper powers
+the required primitive (the Profile `Switch`, themed from our tokens) and everything visual stays
+custom — exactly as the brief allows.
 
-### Why React Native Paper (not Gluestack)
+---
 
-The brief asked for Gluestack UI, with **React Native Paper as the sanctioned fallback if
-Gluestack causes setup friction**. On this bleeding-edge stack (SDK 57 / React 19),
-Gluestack v2's interactive CLI setup was risky, so Paper was used for the required library
-primitive (the Profile `Switch`), themed by mapping our design tokens onto Paper's MD3
-theme (`AppPaperProvider`). Everything visual/branded (cards, hero, player, ranked rail)
-stays **custom**, exactly as the brief prescribes.
+## ⚡ Performance
 
-### Theming
+- Stable `keyExtractor={(i) => i.id}` (never index); `renderItem`/cards are memoized.
+- `getItemLayout` wherever item size is fixed, so lists skip async measurement.
+- Tuned FlatList windowing per list (small windows for short horizontal rows; ~one screen up
+  front for vertical lists).
+- `expo-image` with blurhash placeholders and a cross-fade transition.
+- `useMemo` only where there's real derived cost.
 
-`theme/tokens.ts` is the single source of truth. `ThemeProvider` injects the active palette
-as **NativeWind CSS variables** (`rgb(var(--color-*) / <alpha-value>)`, so opacity
-modifiers keep working) *and* exposes the raw hex via context for imperative consumers
-(React Navigation theme, StatusBar, icons). Toggling theme rebuilds the variables, so the
-whole app re-themes instantly — no hardcoded hex in components.
+*(The mock service adds a real network delay so loading/skeleton/error states are genuinely
+exercised — flip `networkConfig.failureRate` in `src/utils/delay.ts` to see the error paths.)*
 
-## Performance
+---
 
-Graded surface, so the FlatList tuning is deliberate:
+## 🧪 Testing
 
-- **Stable keys** — every list uses `keyExtractor={(i) => i.id}`, never index.
-- **Memoized render paths** — cards are `React.memo`; `renderItem` and `keyExtractor` are
-  `useCallback`.
-- **`getItemLayout`** — provided wherever item size is fixed (card stride, row height), so
-  the list skips async on-scroll measurement.
-- **Windowing numbers, and why:**
-  - *Horizontal course rows* — `initialNumToRender=4`, `maxToRenderPerBatch=4`,
-    `windowSize=5`, `removeClippedSubviews`. ~2–3 cards are visible; render a few ahead for
-    smooth swipes, but keep the retained window small since a row is short and off-screen
-    cards are cheap to drop.
-  - *Vertical lists (Search / Browse)* — `initialNumToRender=8`, `maxToRenderPerBatch=8`,
-    `windowSize=7`. ~8 rows fill a phone screen, so render one screenful up front and keep
-    ~3 screens of buffer for fast flings without over-rendering.
-  - *Hero pager* — `initialNumToRender=2`, `windowSize=3`. Items are large and full-width;
-    keep only the neighbours mounted.
-- **Images** — `expo-image` with a blurhash placeholder and a cross-fade `transition`, so
-  cards fade in instead of popping.
-- **Derived work** — `useMemo` only where there's real cost (e.g. Top Courses filtering);
-  trivial values are left un-memoized.
+`npm test` — Jest + React Native Testing Library:
 
-## Testing
+- **courseService** — resolves typed data; rejects with `NetworkError` when the failure rate is 1.
+- **format utils** — percent, rating, duration parsing, time-left, clock.
+- **CourseCard** — renders the title and fires `onPress`.
 
-`npm test` — Jest + React Testing Library:
+---
 
-- **`courseService`** — resolves typed data; rejects with `NetworkError` when
-  `failureRate = 1`.
-- **`format` utils** — percent, rating, meta line, duration parsing, time-left, clock.
-- **`CourseCard`** — renders the title and fires `onPress` with the course id.
+## 🔭 What I'd do next
 
-Native modules (icons, image, gradient, masked-view, haptics, Reanimated) are stubbed in
-`jest.setup.js` so component tests run under Node.
-
-## What I'd do next
-
-- **Persistence** — `zustand/persist` + AsyncStorage for watchlist and theme; hydrate
-  React Query from cache for offline-first.
-- **Real backend** — swap the mock `courseService` for a REST/GraphQL client (the service
-  boundary means consumers don't change) and add optimistic watchlist mutations.
-- **Real playback** — replace the Player stub with `expo-video`, resume positions, and
-  per-module progress tracking.
-- **More tests** — a Home skeleton→content integration test, Detail watchlist flow, and E2E
-  (Maestro/Detox) for the notification → deep-link path.
-- **A11y & i18n** — audit labels/contrast; move `constants/strings` behind an i18n library.
-- **CI** — GitHub Actions running `typecheck` + `test`, and EAS build/submit.
-
-## Deployment
-
-Managed/CNG, so the shareable build is produced with **EAS Build** (`eas build -p ios|android`)
-— no committed native folders. See the "development build" note above for local runs.
+- **Persistence** — `zustand/persist` + AsyncStorage for watchlist & theme; hydrate React Query
+  for offline-first.
+- **Real backend & playback** — swap the mock service for a real API (consumers don't change),
+  and drop `expo-video` into the player surface.
+- **More tests** — Home skeleton→content integration test and an E2E for the notification →
+  deep-link flow.
+- **CI** — GitHub Actions running `typecheck` + `test`.
