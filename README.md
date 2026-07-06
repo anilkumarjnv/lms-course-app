@@ -85,6 +85,10 @@ npm run typecheck    # tsc --noEmit
 
 ##  How it's built
 
+> **Full engineering deep-dive:** [`docs/TECHNICAL.md`](docs/TECHNICAL.md) — architecture,
+> the React Query + Zustand split, component-library choice, theming, performance tuning, and
+> build/runtime decisions.
+
 ```
 src/
   services/    mock API (course / user / notification) — the ONLY place that reads seed JSON
