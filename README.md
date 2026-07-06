@@ -1,4 +1,4 @@
-# LearnHub 🎓
+# LearnHub 
 
 A **mobile-first Learning Management System** built with React Native (Expo) — designed like a
 **streaming app** (think Hotstar/Netflix) but reimagined for courses. The hero is a featured
@@ -10,7 +10,7 @@ product: **discover → detail → play → track progress.**
 
 ---
 
-## 📱 Screenshots
+##  Screenshots
 
 |  Home  |  Course Detail  |  Player  |
 | :----: | :-------------: | :------: |
@@ -20,7 +20,7 @@ product: **discover → detail → play → track progress.**
 | :------: | :-------: | :------------------------: |
 | <img src="docs/screenshots/search.png" width="230" /> | <img src="docs/screenshots/profile.png" width="230" /> | <img src="docs/screenshots/browse-all.png" width="230" /> |
 
-### 🌙 Full dark mode
+###  Full dark mode
 
 |  Home  |  Detail  |  Player  |
 | :----: | :------: | :------: |
@@ -28,7 +28,7 @@ product: **discover → detail → play → track progress.**
 
 ---
 
-## ✨ What it does
+##  What it does
 
 - **Home** — a swipeable, edge-peek **hero** with Play / Add buttons, a **Continue Learning**
   resume rail (progress + time left), a **Top Courses** ranked list with category filter chips,
@@ -46,7 +46,7 @@ product: **discover → detail → play → track progress.**
 
 ---
 
-## 🧱 Tech stack
+##  Tech stack
 
 | Area | Choice |
 | --- | --- |
@@ -64,7 +64,7 @@ product: **discover → detail → play → track progress.**
 
 ---
 
-## 🚀 Run it locally
+##  Run it locally
 
 ```bash
 npm install
@@ -83,7 +83,7 @@ npm run typecheck    # tsc --noEmit
 
 ---
 
-## 🏗️ How it's built
+##  How it's built
 
 ```
 src/
@@ -123,7 +123,7 @@ custom — exactly as the brief allows.
 
 ---
 
-## ⚡ Performance
+##  Performance
 
 - Stable `keyExtractor={(i) => i.id}` (never index); `renderItem`/cards are memoized.
 - `getItemLayout` wherever item size is fixed, so lists skip async measurement.
@@ -137,7 +137,7 @@ exercised — flip `networkConfig.failureRate` in `src/utils/delay.ts` to see th
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 `npm test` — Jest + React Native Testing Library:
 
@@ -147,7 +147,7 @@ exercised — flip `networkConfig.failureRate` in `src/utils/delay.ts` to see th
 
 ---
 
-## 🔭 What I'd do next
+##  What I'd do next
 
 - **Persistence** — `zustand/persist` + AsyncStorage for watchlist & theme; hydrate React Query
   for offline-first.
