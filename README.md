@@ -42,7 +42,7 @@ product: **discover → detail → play → track progress.**
 - **Profile** — mock user, **dark-mode** and notifications toggles, a **test notification** that
   **deep-links** into a course when tapped, watchlist section, and logout.
 - **Everywhere** — light/dark theming, **skeleton loaders**, pull-to-refresh, **infinite scroll**,
-  haptics, press animations, and a WebView ↔ RN `postMessage` bridge
+  haptics, press animations, and a WebView ↔ RN `postMessage` bridge.
 
 ---
 
